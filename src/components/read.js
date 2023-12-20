@@ -49,9 +49,7 @@ export default function Read() {
 
     
     return (
-        
 
-        
         <div className = "read-container">
             <div className = "leftAlign">
             <Link to='/create'>

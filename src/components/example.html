@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update User ID for Post</title>
+  </head>
+  <body>
+    <h1>Update User ID for Post</h1>
+
+    <form id="updateForm">
+      <label for="postId">Select Post:</label>
+      <select id="postId" name="postId" required>
+        <!-- Populate this dynamically using JavaScript -->
+      </select>
+
+      <label for="userId">Select User:</label>
+      <select id="userId" name="userId" required>
+        <!-- Populate this dynamically using JavaScript -->
+      </select>
+
+      <button type="button" onclick="updateUserForPost()">
+        Update User ID
+      </button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+      // Assume you have an API endpoint to fetch available post and user IDs
+      const fetchIds = async () => {
+        try {
+          const [posts, users] = await Promise.all([
+            fetch("http://localhost:4000/posts").then((response) =>
+              response.json()
+            ),
+            fetch("http://localhost:4000/users").then((response) =>
+              response.json()
+            ),
+          ]);
+
+          // Populate post dropdown
+          const postDropdown = document.getElementById("postId");
+          posts.forEach((post) => {
+            const option = document.createElement("option");
+            option.value = post.id;
+            option.textContent = `Post ${post.id}`;
+            postDropdown.appendChild(option);
+          });
+
+          // Populate user dropdown
+          const userDropdown = document.getElementById("userId");
+          users.forEach((user) => {
+            const option = document.createElement("option");
+            option.value = user.id;
+            option.textContent = user.name;
+            userDropdown.appendChild(option);
+          });
+        } catch (error) {
+          console.error("Fetch error:", error);
+        }
+      };
+
+      async function updateUserForPost() {
+        const postId = document.getElementById("postId").value;
+        const userId = document.getElementById("userId").value;
+
+        try {
+          const response = await fetch(
+            `http://localhost:4000/posts/${postId}/user/${userId}`,
+            {
+              method: "PUT",
+            }
+          );
+
+          const result = await response.json();
+
+          if (response.ok) {
+            document.getElementById(
+              "result"
+            ).innerHTML = `<p>${result.message}</p>`;
+          } else {
+            document.getElementById(
+              "result"
+            ).innerHTML = `<p>Error: ${result.error}</p>`;
+          }
+        } catch (error) {
+          console.error("Fetch error:", error);
+          document.getElementById("result").innerHTML =
+            "<p>Failed to fetch data</p>";
+        }
+      }
+
+      // Fetch available IDs when the page loads
+      fetchIds();
+    </script>
+  </body>
+</html>

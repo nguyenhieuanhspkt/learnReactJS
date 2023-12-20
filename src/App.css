@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+.header-top {
+  background: #133C8B;
+  font-size: 18px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
 
 .create-form label{
   color: whitesmoke !important;
@@ -14,6 +20,12 @@
   padding-right:10px;
 }
 
+.read-container {
+  background-color: black;
+  box-sizing: border-box;
+  padding: 50px;
+  border-radius: 50px
+}
 
 
 
@@ -21,17 +33,43 @@
 .main-header{
   font-family: 'Montserrat', sans-serif;
 }
-.main{
+.app-container {
   display: flex;
-  justify-content: center;
+  flex-direction: row
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  background-color:#212121 ;
+}
+
+.main-content.collapsed {
+  margin-left: 0;
+}
+
+
+
+
+.mainapp{
+  display: flex;
   align-items: center;
   height: 100vh;
   background-color: #212121;
   color: whitesmoke;
   flex-direction: column;
+  flex: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+
+
 
 
 }
+
+
+
 .App {
   text-align: center;
 }
@@ -70,3 +108,5 @@
     transform: rotate(360deg);
   }
 }
+
+

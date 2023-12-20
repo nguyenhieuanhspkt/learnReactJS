@@ -8,6 +8,7 @@ import axios from 'axios';
 
 
 export default function Update() {
+    //declare variable
     let navigate = useNavigate();
 
     const [firstName, setFirstName] = useState('');
@@ -20,8 +21,9 @@ export default function Update() {
         setLastName(localStorage.getItem('Last Name'));
         setCheckbox(localStorage.getItem('Checkbox Value'))
 }, []);
+    
 
-
+    //code the Update
     const updateAPIData = () => {
         console.log(firstName);
         console.log(lastName);
@@ -35,6 +37,13 @@ export default function Update() {
         navigate('/read')
     })
     }
+    //code the cancelcontrollerFucntion
+
+    const cancel = () => {
+        navigate('/read')
+    }
+
+    //code the UI
     return (
         <div>
             <Form className="create-form">
@@ -50,6 +59,8 @@ export default function Update() {
                     <Checkbox label='I agree to the Terms and Conditions' checked={checkbox} onChange={(e) => setCheckbox(!checkbox)}/>
                 </Form.Field>
                 <Button onClick ={updateAPIData} type='submit'>Submit</Button>
+                <Button onClick ={cancel} type=''>Cancel</Button>
+
             </Form>
         </div>
     )
