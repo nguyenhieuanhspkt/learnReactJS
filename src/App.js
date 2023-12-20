@@ -17,13 +17,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const iconStyle = {
-    position: 'fixed', // or 'absolute' based on your preference
-    top: '00px', // Adjust these values to position the icon where you want
-    left: '110px',
-    cursor: 'pointer',
-    zIndex: 1000, // Adjust the z-index to make sure it's above other elements
-  };
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -31,8 +24,8 @@ function App() {
   return (
     <Router>
       <div>
-        <div>
-          <FontAwesomeIcon icon={faBars} style={iconStyle} onClick={toggleSidebar} />
+        <div className={`icon-container ${isSidebarOpen ? '' : 'collapsed'}`}>
+          <FontAwesomeIcon icon={faBars} onClick={toggleSidebar} />
         </div>
         <div className={`app-container ${isSidebarOpen ? '' : 'collapsed'}`}>
           <SideBar isOpen={isSidebarOpen} />

@@ -1,58 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 .header-top {
-  background: #133C8B;
+  background: #133c8b;
   font-size: 18px;
   line-height: 16px;
   text-transform: uppercase;
 }
 
-.create-form label{
+.create-form label {
   color: whitesmoke !important;
   font-family: 'Montserrat', sans-serif;
   font-size: 12px !important;
 }
 .leftAlign {
-  float:left;
-  padding-left:10px;
+  float: left;
+  padding-left: 10px;
 }
 .rigtAlign {
-  float:right;
-  padding-right:10px;
+  float: right;
+  padding-right: 10px;
 }
 
 .read-container {
   background-color: black;
   box-sizing: border-box;
   padding: 50px;
-  border-radius: 50px
+  border-radius: 50px;
 }
 
-
-
-
-.main-header{
+.main-header {
   font-family: 'Montserrat', sans-serif;
+  color: white;
+  padding-left: 30px;
 }
 .app-container {
   display: flex;
-  flex-direction: row
+  flex-direction: row;
 }
 
 .main-content {
   flex: 1;
   padding: 20px;
   transition: margin-left 0.3s ease;
-  background-color:#212121 ;
+  background-color: #333;
 }
 
-.main-content.collapsed {
+.main-content.collapsed,
+.app-container.collapsed {
   margin-left: 0;
 }
 
-
-
-
-.mainapp{
+.mainapp {
   display: flex;
   align-items: center;
   height: 100vh;
@@ -62,13 +59,7 @@
   flex: 1;
   padding: 20px;
   transition: margin-left 0.3s ease;
-
-
-
-
 }
-
-
 
 .App {
   text-align: center;
@@ -109,4 +100,21 @@
   }
 }
 
+.icon-container {
+  position: fixed;
+  top: 20px;
+  left: 10px;
+  cursor: pointer;
+  z-index: 1000;
+  color: white;
+  font-size: 25px;
+}
 
+.icon-container.colappsed {
+  position: fixed;
+  top: 20px;
+  left: 0px;
+  cursor: pointer;
+  z-index: 1000;
+  color: white;
+}
