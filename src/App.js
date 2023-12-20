@@ -12,8 +12,6 @@ import './components/sidebar/sidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-
-
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -30,33 +28,27 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-
   return (
     <Router>
       <div>
-        <div> <FontAwesomeIcon icon={faBars} style={iconStyle} onClick={toggleSidebar} /></div>
-       
+        <div>
+          <FontAwesomeIcon icon={faBars} style={iconStyle} onClick={toggleSidebar} />
+        </div>
+        <div className={`app-container ${isSidebarOpen ? '' : 'collapsed'}`}>
+          <SideBar isOpen={isSidebarOpen} />
+          <div className={`main-content ${isSidebarOpen ? '' : 'collapsed'}`}>
+            <h2 className="main-header">React Crud Operations</h2>
 
-          <div className={`app-container ${isSidebarOpen ? '' : 'collapsed'}`}>
-               <SideBar isOpen={isSidebarOpen}  />
-                <div className={`main-content ${isSidebarOpen ? '' : 'collapsed'}`}>
-                    
-                <h2 className="main-header">React Crud Operations</h2>
-                
-                <Routes>
-                  <Route path='/create' element={<Create />} />
-                  <Route path='/read' element={<Read />} />
-                  <Route path='/Update' element={<Update />} />
-                  <Route path='/Xampp' element={<Xampp />} />
-                  <Route path='/updateXampp' element={<UpdateXampp />} />
-
-
-                </Routes>
-                </div>
-            </div>
-
+            <Routes>
+              <Route path="/create" element={<Create />} />
+              <Route path="/read" element={<Read />} />
+              <Route path="/Update" element={<Update />} />
+              <Route path="/Xampp" element={<Xampp />} />
+              <Route path="/updateXampp" element={<UpdateXampp />} />
+            </Routes>
+          </div>
+        </div>
       </div>
-
     </Router>
   );
 }
